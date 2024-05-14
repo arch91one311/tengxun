@@ -1,5 +1,6 @@
 package com.arch.registry;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +14,7 @@ import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 
+@ConditionalOnProperty(prefix = "arch.register.security", name = "enable", havingValue = "true")
 @EnableConfigurationProperties(RegisterProperties.class)
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {

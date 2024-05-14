@@ -1,10 +1,11 @@
 package com.arch.registry;
 
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
-
+@ConditionalOnProperty(prefix = "arch.register.security", name = "enable", havingValue = "true")
 @ConfigurationProperties(prefix = "arch.register")
 public class RegisterProperties {
 
