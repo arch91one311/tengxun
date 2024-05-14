@@ -7,11 +7,51 @@
     <groupId>com.arch</groupId>
     <artifactId>arch-cx-service</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>cx-api</module>
+        <module>cx-core</module>
+        <module>cx-bootstrap</module>
+    </modules>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+        <arch-springboot.version>1.0-SNAPSHOT</arch-springboot.version>
+        <arch-springcloud.version>1.0-SNAPSHOT</arch-springcloud.version>
+        <arch.version>1.0-SNAPSHOT</arch.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.arch</groupId>
+                <artifactId>arch-springboot-dependencies</artifactId>
+                <version>${arch-springboot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.arch</groupId>
+                <artifactId>arch-springcloud-dependencies</artifactId>
+                <version>${arch-springcloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.arch</groupId>
+                <artifactId>cx-api</artifactId>
+                <version>${arch.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.arch</groupId>
+                <artifactId>cx-core</artifactId>
+                <version>${arch.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>

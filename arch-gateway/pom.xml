@@ -7,11 +7,50 @@
     <groupId>com.arch</groupId>
     <artifactId>arch-gateway</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>arch-cx</module>
+    </modules>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+        <arch-springboot.version>1.0-SNAPSHOT</arch-springboot.version>
+        <arch-springcloud.version>1.0-SNAPSHOT</arch-springcloud.version>
+        <arch-cx.version>1.0-SNAPSHOT</arch-cx.version>
+        <arch-gateway-biz-cx.version>1.0-SNAPSHOT</arch-gateway-biz-cx.version>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.arch</groupId>
+                <artifactId>arch-springboot-dependencies</artifactId>
+                <version>${arch-springboot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.arch</groupId>
+                <artifactId>arch-springcloud-dependencies</artifactId>
+                <version>${arch-springcloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.arch</groupId>
+                <artifactId>cx-api</artifactId>
+                <version>${arch-cx.version}</version>
+            </dependency>
+            <!--  gateway 自身依赖 -->
+            <dependency>
+                <groupId>com.arch</groupId>
+                <artifactId>arch-cx</artifactId>
+                <version>${arch-gateway-biz-cx.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
