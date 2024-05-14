@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!--Configuration后面的status，这个用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，你会看到log4j2内部各种详细输出-->
+<!--monitorInterval：Log4j能够自动检测修改配置 文件和重新配置本身，设置间隔秒数-->
+<configuration status="WARN" monitorInterval="30">
+    <!--先定义所有的appender-->
+    <appenders>
+        <!--这个输出控制台的配置-->
+        <console name="CONSOLE" target="SYSTEM_OUT">
+            <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
+            <!--输出日志的格式-->
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %level [%c,%M,%L]:      %msg%n"/>
+        </console>
+        <!-- 这个会打印出所有的info及以下级别的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
+        <RollingFile name="ROLLING" fileName="logs/registry/registry.log"
+                     filePattern="logs/platform-$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+            <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %level [%c,%M,%L]:      %msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+        </RollingFile>
+
+        <RollingFile name="MIDDLEWARE" fileName="logs/registry-middleware.log" filePattern="logs/platform-middleware-$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %level [%c,%M,%L]:      %msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingFile>
+
+        <RollingFile name="WARN" fileName="logs/registry-warn.log" filePattern="logs/platform-warn-$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+            <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %level [%c,%M,%L]:      %msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingFile>
+
+        <RollingFile name="ERROR" fileName="logs/registry-error.log" filePattern="logs/platform-error-$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %level [%c,%M,%L]:      %msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingFile>
+    </appenders>
+
+    <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效-->
+    <loggers>
+        <root level="info">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="ROLLING" />
+            <appender-ref ref="WARN" />
+            <appender-ref ref="ERROR" />
+        </root>
+        <!-- 业务日志定义 -->
+        <logger name="kyp.trans.cache" level="info" additivity="false">
+            <appender-ref ref="ROLLING" />
+            <appender-ref ref="WARN" />
+            <appender-ref ref="ERROR" />
+        </logger>
+
+        <logger name="kyp.trans.no.cache" level="info" additivity="false">
+            <appender-ref ref="ROLLING" />
+            <appender-ref ref="WARN" />
+            <appender-ref ref="ERROR" />
+        </logger>
+
+        <logger name="com.hundsun.kyp" level="INFO" >
+            <appender-ref ref="ROLLING" />
+            <appender-ref ref="WARN" />
+            <appender-ref ref="ERROR" />
+        </logger>
+        <!--过滤掉spring和mybatis的一些无用的DEBUG信息-->
+        <!-- mybatis sql日志级别，设置为DEBUG才会有mybatis的sql日志 -->
+        <logger name="mybatis-sqllog" level="INFO">
+            <appender-ref ref="ROLLING" />
+            <appender-ref ref="WARN" />
+            <appender-ref ref="ERROR" />
+        </logger>
+
+        <logger name="org.springframework" level="INFO">
+            <appender-ref ref="MIDDLEWARE" />
+        </logger>
+        <logger name="org.mybatis" level="INFO">
+            <appender-ref ref="MIDDLEWARE" />
+        </logger>
+        <logger name="io.lettuce" level="ERROR">
+            <appender-ref ref="MIDDLEWARE" />
+        </logger>
+        <logger name="io.netty" level="ERROR">
+            <appender-ref ref="MIDDLEWARE" />
+        </logger>
+        <logger name="org.ehcache" level="ERROR">
+            <appender-ref ref="MIDDLEWARE" />
+        </logger>
+        <logger name="springfox" level="ERROR">
+            <appender-ref ref="MIDDLEWARE" />
+        </logger>
+        <logger name="Validator" level="ERROR">
+            <appender-ref ref="MIDDLEWARE" />
+        </logger>
+        <logger name="com.hundsun" level="ERROR" >
+            <appender-ref ref="MIDDLEWARE" />
+        </logger>
+        <logger name="com.alibaba.dubbo" level="ERROR" >
+            <appender-ref ref="MIDDLEWARE" />
+        </logger>
+        <logger name="com.alibaba.druid" level="ERROR" >
+            <appender-ref ref="MIDDLEWARE" />
+        </logger>
+        <logger name="org.apache.shiro" level="ERROR" >
+            <appender-ref ref="MIDDLEWARE" />
+        </logger>
+        <logger name="org.activiti" level="ERROR" >
+            <appender-ref ref="MIDDLEWARE" />
+        </logger>
+        <logger name="org.apache.ibatis" level="ERROR">
+            <appender-ref ref="MIDDLEWARE" />
+        </logger>
+        <logger name="io.lettuce.core" level="ERROR">
+            <appender-ref ref="MIDDLEWARE" />
+        </logger>
+        <logger name="org.quartz" level="ERROR">
+            <appender-ref ref="MIDDLEWARE" />
+        </logger>
+        <logger name="druid.sql" level="ERROR">
+            <appender-ref ref="MIDDLEWARE" />
+        </logger>
+        <logger name="org.apache.zookeeper" level="INFO">
+            <appender-ref ref="MIDDLEWARE" />
+        </logger>
+        <logger name="org.hibernate" level="ERROR"/>
+        <logger name="com.baomidou.mybatisplus" level="INFO">
+            <appender-ref ref="MIDDLEWARE" />
+        </logger>
+        <logger name="liquibase" level="INFO">
+            <appender-ref ref="MIDDLEWARE" />
+        </logger>
+
+
+    </loggers>
+</configuration>
