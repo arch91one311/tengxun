@@ -13,7 +13,7 @@
         </console>
         <!-- 这个会打印出所有的info及以下级别的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
         <RollingFile name="ROLLING" fileName="logs/registry/registry.log"
-                     filePattern="logs/platform-$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+                     filePattern="logs/registry/platform-$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
             <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
             <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %level [%c,%M,%L]:      %msg%n"/>
@@ -23,7 +23,7 @@
             </Policies>
         </RollingFile>
 
-        <RollingFile name="MIDDLEWARE" fileName="logs/registry-middleware.log" filePattern="logs/platform-middleware-$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+        <RollingFile name="MIDDLEWARE" fileName="logs/registry/registry-middleware.log" filePattern="logs/registry/platform-middleware-$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
             <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %level [%c,%M,%L]:      %msg%n"/>
             <Policies>
@@ -31,7 +31,7 @@
             </Policies>
         </RollingFile>
 
-        <RollingFile name="WARN" fileName="logs/registry-warn.log" filePattern="logs/platform-warn-$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+        <RollingFile name="WARN" fileName="logs/registry/registry-warn.log" filePattern="logs/registry/platform-warn-$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
             <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %level [%c,%M,%L]:      %msg%n"/>
             <Policies>
@@ -39,7 +39,7 @@
             </Policies>
         </RollingFile>
 
-        <RollingFile name="ERROR" fileName="logs/registry-error.log" filePattern="logs/platform-error-$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+        <RollingFile name="ERROR" fileName="logs/registry/registry-error.log" filePattern="logs/registry/platform-error-$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
             <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %level [%c,%M,%L]:      %msg%n"/>
             <Policies>
