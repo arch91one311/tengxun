@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>arch-cx</module>
+        <module>gateway-bootstrap</module>
     </modules>
 
     <properties>
@@ -48,7 +49,7 @@
             <!--  gateway 自身依赖 -->
             <dependency>
                 <groupId>com.arch</groupId>
-                <artifactId>arch-cx</artifactId>
+                <artifactId>arch-gateway-biz-cx</artifactId>
                 <version>${arch-gateway-biz-cx.version}</version>
             </dependency>
         </dependencies>
