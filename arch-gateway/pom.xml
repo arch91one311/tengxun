@@ -21,6 +21,7 @@
         <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
         <arch-springboot.version>1.0-SNAPSHOT</arch-springboot.version>
         <arch-springcloud.version>1.0-SNAPSHOT</arch-springcloud.version>
+        <boot.base.version>1.0-SNAPSHOT</boot.base.version>
         <arch-cx.version>1.0-SNAPSHOT</arch-cx.version>
         <arch-gateway-biz-cx.version>1.0-SNAPSHOT</arch-gateway-biz-cx.version>
     </properties>
@@ -46,11 +47,22 @@
                 <artifactId>cx-api</artifactId>
                 <version>${arch-cx.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.arch</groupId>
+                <artifactId>cx-core</artifactId>
+                <version>${arch-cx.version}</version>
+            </dependency>
             <!--  gateway 自身依赖 -->
             <dependency>
                 <groupId>com.arch</groupId>
                 <artifactId>arch-gateway-biz-cx</artifactId>
                 <version>${arch-gateway-biz-cx.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.arch</groupId>
+                <artifactId>boot-base</artifactId>
+                <version>${boot.base.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

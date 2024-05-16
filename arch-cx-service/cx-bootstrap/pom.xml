@@ -27,6 +27,57 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <!--socket的依赖全部移动到kyp-boot-websocket-->
+            <exclusions>
+                <exclusion>
+                    <artifactId>tomcat-embed-websocket</artifactId>
+                    <groupId>org.apache.tomcat.embed</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-openfeign-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.arch</groupId>
+            <artifactId>boot-base</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.arch</groupId>
+            <artifactId>boot-starter-db</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.arch</groupId>
+            <artifactId>cx-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.arch</groupId>
+            <artifactId>cx-api</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

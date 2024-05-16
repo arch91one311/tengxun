@@ -16,5 +16,21 @@
             <groupId>com.arch</groupId>
             <artifactId>cx-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.arch</groupId>
+            <artifactId>boot-base</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.arch</groupId>
+            <artifactId>cx-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
     </dependencies>
 </project>

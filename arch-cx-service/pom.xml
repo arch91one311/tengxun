@@ -51,6 +51,16 @@
                 <artifactId>cx-core</artifactId>
                 <version>${arch.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.arch</groupId>
+                <artifactId>boot-base</artifactId>
+                <version>${arch.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.arch</groupId>
+                <artifactId>boot-starter-db</artifactId>
+                <version>${arch.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

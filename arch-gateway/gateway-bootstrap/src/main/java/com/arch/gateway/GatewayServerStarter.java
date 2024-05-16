@@ -21,7 +21,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
 @SpringBootApplication(scanBasePackages = {"com.arch"})
 @EnableDiscoveryClient
 @EnableFeignClients("com.arch")
-@ImportResource(locations = {"classpath*:**SpringContext.xml"})
+@ImportResource(locations = {"classpath*:**SpringContext.xml", "classpath*:/dubbo/**consumer.xml"})
 @Slf4j
 public class GatewayServerStarter extends SpringBootServletInitializer {
 
