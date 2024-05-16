@@ -15,5 +15,5 @@
 
     <dubbo:registry protocol="nacos" address="127.0.0.1:8848"/>
 
-    <dubbo:reference id="majorStudentApi" check="false" interface="com.arch.api.student.api.major.MajorStudentApi"/>
+    <dubbo:reference id="majorStudentService" check="false" interface="com.arch.api.student.api.major.MajorStudentApi"/>
 </beans>
