@@ -16,6 +16,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
 /**
  * WebBff启动类
  * @author chenkun
+ * //java --add-opens java.base/java.lang=ALL-UNNAMED -jar gateway-bootstrap-1.0-SNAPSHOT.jar
  */
 @EnableCaching
 //排除数据库自动配置

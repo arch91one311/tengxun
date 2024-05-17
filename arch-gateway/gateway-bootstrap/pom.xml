@@ -8,13 +8,15 @@
         <artifactId>arch-gateway</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
+    <properties>
+        <service.name>gateway-bootstrap</service.name>
+    </properties>
     <artifactId>gateway-bootstrap</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.arch</groupId>
-            <artifactId>arch-gateway-biz-cx</artifactId>
+            <artifactId>arch-cx</artifactId>
         </dependency>
         <dependency>
             <groupId>com.arch</groupId>
@@ -117,10 +119,36 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.1.4.RELEASE</version>
+                <configuration>
+                    <!-- 指定该jar包启动时的主类[建议] -->
+                    <mainClass>com.arch.gateway.GatewayServerStarter</mainClass>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
                             <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.2-beta-5</version>
+                <configuration>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptors>
+                        <descriptor>src/main/resources/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                    <outputDirectory>${project.build.directory}/</outputDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
                         </goals>
                     </execution>
                 </executions>

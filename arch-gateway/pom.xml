@@ -23,7 +23,6 @@
         <arch-springcloud.version>1.0-SNAPSHOT</arch-springcloud.version>
         <boot.base.version>1.0-SNAPSHOT</boot.base.version>
         <arch-cx.version>1.0-SNAPSHOT</arch-cx.version>
-        <arch-gateway-biz-cx.version>1.0-SNAPSHOT</arch-gateway-biz-cx.version>
     </properties>
 
     <dependencyManagement>
@@ -56,8 +55,8 @@
             <!--  gateway 自身依赖 -->
             <dependency>
                 <groupId>com.arch</groupId>
-                <artifactId>arch-gateway-biz-cx</artifactId>
-                <version>${arch-gateway-biz-cx.version}</version>
+                <artifactId>arch-cx</artifactId>
+                <version>${arch-cx.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.arch</groupId>
