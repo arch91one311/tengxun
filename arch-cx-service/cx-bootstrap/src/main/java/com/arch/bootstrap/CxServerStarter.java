@@ -9,7 +9,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ImportResource;
 
-@SpringBootApplication(scanBasePackages = { "com.arch.core.service" })
+@SpringBootApplication(scanBasePackages = { "com.arch" })
 @EnableDiscoveryClient
 @ImportResource(locations = {"classpath*:**SpringContext.xml", "classpath*:**provider.xml"})
 @MapperScan(basePackages = "com.arch" , annotationClass = ArchSqlDao.class)

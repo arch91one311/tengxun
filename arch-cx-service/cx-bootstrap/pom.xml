@@ -72,10 +72,6 @@
         </dependency>
         <dependency>
             <groupId>com.arch</groupId>
-            <artifactId>cx-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.arch</groupId>
             <artifactId>cx-api</artifactId>
         </dependency>
     </dependencies>

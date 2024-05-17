@@ -18,7 +18,8 @@ import org.springframework.core.env.ConfigurableEnvironment;
  * @author chenkun
  */
 @EnableCaching
-@SpringBootApplication(scanBasePackages = {"com.arch"})
+//排除数据库自动配置
+@SpringBootApplication(scanBasePackages = {"com.arch"},exclude = {org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration.class})
 @EnableDiscoveryClient
 @EnableFeignClients("com.arch")
 @ImportResource(locations = {"classpath*:**SpringContext.xml", "classpath*:/dubbo/**consumer.xml"})
