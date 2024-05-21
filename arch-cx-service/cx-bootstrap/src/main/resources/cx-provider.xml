@@ -11,9 +11,13 @@
 
     <context:property-placeholder/>
 
-    <dubbo:application name="cx-consumer"/>
+    <dubbo:application name="cx-provider"/>
 
     <dubbo:registry protocol="nacos" address="127.0.0.1:8848"/>
 
-    <dubbo:reference id="majorStudentService" check="false" interface="com.arch.api.student.api.major.MajorStudentApi"/>
+    <dubbo:protocol name="dubbo" port="20880"/>
+
+    <dubbo:provider timeout="3000"/>
+
+    <dubbo:service interface="com.arch.api.student.api.major.MajorStudentApi" ref="majorStudentApi"/>
 </beans>

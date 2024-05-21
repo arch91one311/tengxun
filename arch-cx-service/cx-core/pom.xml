@@ -136,6 +136,11 @@
             <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.arch</groupId>
+            <artifactId>boot-base</artifactId>
+        </dependency>
+
     </dependencies>
 
 

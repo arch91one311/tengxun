@@ -2,6 +2,7 @@ package com.arch.cx.student;
 
 import com.arch.api.student.api.major.MajorStudentApi;
 import com.arch.api.student.dto.MajorStudentInfo;
+import com.arch.cx.common.util.AjaxJson;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +17,7 @@ public class StudentController {
     public MajorStudentApi majorStudentApi;
 
     @PostMapping("/queryMajorStudentInfo")
-    public MajorStudentInfo queryMajorStudentInfo(@RequestParam(value = "id") String id) {
-        return majorStudentApi.queryMajorStudentInfo(id);
+    public AjaxJson<MajorStudentInfo> queryMajorStudentInfo(@RequestParam(value = "id") String id) {
+        return AjaxJson.okGeneric(majorStudentApi.queryMajorStudentInfo(id));
     }
 }

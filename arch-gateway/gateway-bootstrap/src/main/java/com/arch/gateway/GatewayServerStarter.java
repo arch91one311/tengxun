@@ -8,7 +8,6 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.core.env.ConfigurableEnvironment;
@@ -20,9 +19,8 @@ import org.springframework.core.env.ConfigurableEnvironment;
  */
 @EnableCaching
 //排除数据库自动配置
-@SpringBootApplication(scanBasePackages = {"com.arch"},exclude = {org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration.class})
+@SpringBootApplication(scanBasePackages = {"com.arch.cx","com.arch.gateway"},exclude = {org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration.class})
 @EnableDiscoveryClient
-@EnableFeignClients("com.arch")
 @ImportResource(locations = {"classpath*:**SpringContext.xml", "classpath*:/dubbo/**consumer.xml"})
 @Slf4j
 public class GatewayServerStarter extends SpringBootServletInitializer {

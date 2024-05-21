@@ -2,13 +2,20 @@ package com.arch.core.service.student.major;
 
 import com.arch.api.student.api.major.MajorStudentApi;
 import com.arch.api.student.dto.MajorStudentInfo;
+import com.arch.core.dao.MajorStudentDao;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 @Service("majorStudentApi")
 public class MajorStudentApiImpl implements MajorStudentApi {
+
+    @Resource
+    private MajorStudentDao majorStudentDao;
+
     @Override
     public MajorStudentInfo queryMajorStudentInfo(String studentId) {
-        //mock
-        return new MajorStudentInfo("10086","超人不会飞","18","男","清华大学","大一");
+        return majorStudentDao.selectOne(Wrappers.<MajorStudentInfo>lambdaQuery().eq(MajorStudentInfo::getStudentId, studentId));
     }
 }
