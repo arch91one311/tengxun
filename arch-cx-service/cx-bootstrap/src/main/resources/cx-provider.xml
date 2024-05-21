@@ -13,7 +13,7 @@
 
     <dubbo:application name="cx-provider"/>
 
-    <dubbo:registry protocol="nacos" address="127.0.0.1:8848"/>
+    <dubbo:registry protocol="nacos" address="${spring.cloud.nacos.discovery.serverAddr}"/>
 
     <dubbo:protocol name="dubbo" port="20880"/>
 

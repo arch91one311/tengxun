@@ -17,6 +17,7 @@
                 <include>*.properties</include>
                 <include>*.xml</include>
                 <include>*.yml</include>
+                <include>Dockerfile</include>
             </includes>
         </fileSet>
         <fileSet>

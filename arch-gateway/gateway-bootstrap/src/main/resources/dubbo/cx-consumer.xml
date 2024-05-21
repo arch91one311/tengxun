@@ -13,7 +13,7 @@
 
     <dubbo:application name="cx-consumer"/>
 
-    <dubbo:registry protocol="nacos" address="127.0.0.1:8848"/>
+    <dubbo:registry protocol="nacos" address="${spring.cloud.nacos.discovery.serverAddr}"/>
 
     <dubbo:reference id="majorStudentService" check="false" interface="com.arch.api.student.api.major.MajorStudentApi"/>
 </beans>

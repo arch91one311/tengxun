@@ -7,7 +7,6 @@ COPY ../gateway-bootstrap-1.0-SNAPSHOT.jar /app/gateway-bootstrap-1.0-SNAPSHOT.j
 # 将 config、lib、logs 目录复制到容器中
 COPY ../config /app/config
 COPY ../lib /app/lib
-COPY ../logs /app/logs
 
 # 设置工作目录
 WORKDIR /app

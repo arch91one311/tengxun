@@ -10,6 +10,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.ConfigurableEnvironment;
 
 /**
@@ -23,6 +24,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
 @EnableDiscoveryClient
 @ImportResource(locations = {"classpath*:**SpringContext.xml", "classpath*:/dubbo/**consumer.xml"})
 @Slf4j
+@PropertySource(value = {"classpath:application.properties"})
 public class GatewayServerStarter extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
