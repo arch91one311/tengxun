@@ -1,5 +1,5 @@
 # 使用官方的 OpenJDK 8 镜像作为基础镜像
-FROM adoptopenjdk:8u312-b07-jre-hotspot
+FROM openjdk:8-jre
 
 # 将应用程序的 JAR 文件复制到容器中
 COPY ../cx-bootstrap-1.0-SNAPSHOT.jar /app/cx-bootstrap-1.0-SNAPSHOT.jar
